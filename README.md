@@ -130,3 +130,73 @@ Item 9: Prefer try-with-resources to try-finally
 
 ### 3 Methods Common to All Objects
 
+Item 10: Obey the general contract when overriding equals
+
+"Each instance of the class is inherently unique."
+
+"There is no need for the class to provide a “logical equality” test."
+
+"A superclass has already overridden equals, and the superclass behavior is appropriate for this class."
+
+"The class is private or package-private, and you are certain that its equals method will never be invoked."
+
+"There is no way to extend an instantiable class and add a value component while preserving the equals contract, unless you're willing to forgo the benefits of object-oriented abstraction."
+
+"Whether or not a class is immutable, do not write an equals method that depends on unreliable resources."
+
+"Use the == operator to check if the argument is a reference to this object."
+
+"Use the instanceof operator to check if the argument has the correct type."
+
+"Cast the argument to the correct type."
+
+"For each “significant” field in the class, check if that field of the argument matches the corresponding field of this object."
+
+"When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent?"
+
+"Always override hashCode when you override equals."
+
+"Don't try to be too clever."
+
+"Don't substitute another type for Object in the equals declaration."
+
+Item 11: Always override hashCode when you override equals
+
+"You must override hashCode in every class that overrides equals."
+
+"The key provision that is violated when you fail to override hashCode is the second one: equal objects must have equal hash codes."
+
+"Do not be tempted to exclude significant fields from the hash code computation to improve performance."
+
+"Don't provide a detailed specification for the value returned by hashCode, so clients can't reasonably depend on it; this gives you the flexibility to change it."
+
+Item 12: Always override toString
+
+"While it isn't as critical as obeying the equals and hashCode contracts, providing a good toString implementation makes your class much more pleasant to use and makes systems using the class easier to debug."
+
+"When practical, the toString method should return all of the interesting information contained in the object, as shown in the phone number example."
+
+"Whether or not you decide to specify the format, you should clearly document your intentions."
+
+"Whether or not you specify the format, provide programmatic access to the information contained in the value returned by toString."
+
+Item 13: Override clone judiciously
+
+"Though the specification doesn't say it, in practice, a class implementing Cloneable is expected to provide a properly functioning public clone method."
+
+"This is the case, for example, for the PhoneNumber class in Item 11, but note that immutable classes should never provide a clone method because it would merely encourage wasteful copying."
+
+"In effect, the clone method functions as a constructor; you must ensure that it does no harm to the original object and that it properly establishes invariants on the clone."
+
+"This is a fundamental problem: like serialization, the Cloneable architecture is incompatible with normal use of final fields referring to mutable objects, except in cases where the mutable objects may be safely shared between an object and its clone."
+
+"Public clone methods should omit the throws clause, as methods that don't throw checked exceptions are easier to use."
+
+"A better approach to object copying is to provide a copy constructor or copy factory."
+
+Item 14: Consider implementing Comparable
+
+"Use of the relational operators < and > in compareTo methods is verbose and error-prone and no longer recommended."
+
+### 4 Classes and Interfaces
+
