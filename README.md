@@ -200,3 +200,118 @@ Item 14: Consider implementing Comparable
 
 ### 4 Classes and Interfaces
 
+Item 15: Minimize the accessibility of classes and members
+
+"The rule of thumb is simple: make each class or member as inaccessible as possible."
+
+"Instance fields of public classes should rarely be public."
+
+"Also, you give up the ability to take any action when the field is modified, so classes with public mutable fields are not generally thread-safe."
+
+"Note that a nonzero-length array is always mutable, so it is wrong for a class to have a public static final array field, or an accessor that returns such a field."
+
+Item 16: In public classes, use accessor methods, not public fields
+
+"Certainly, the hard-liners are correct when it comes to public classes: if a class is accessible outside its package, provide accessor methods to preserve the flexibility to change the class's internal representation."
+
+"However, if a class is package-private or is a private nested class, there is nothing inherently wrong with exposing its data fields - assuming they do an adequate job of describing the abstraction provided by the class."
+
+Item 17: Minimize mutability
+
+"Don't provide methods that modify the object's state (known as mutators)."
+
+"Ensure that the class can't be extended."
+
+"Make all fields final."
+
+"Make all fields private."
+
+"Ensure exclusive access to any mutable components."
+
+"Immutable objects are simple."
+
+"Immutable objects are inherently thread-safe; they require no synchronization."
+
+"Since no thread can ever observe any effect of another thread on an immutable object, immutable objects can be shared freely."
+
+"Not only can you share immutable objects, but they can share their internals."
+
+"Immutable objects make great building blocks for other objects, whether mutable or immutable."
+
+"Immutable objects provide failure atomicity for free."
+
+"The major disadvantage of immutable classes is that they require a separate object for each distinct value."
+
+"Classes should be immutable unless there's a very good reason to make them mutable."
+
+"If a class cannot be made immutable, limit its mutability as much as possible."
+
+"Combining the advice of this item with that of Item 15, your natural inclination should be to declare every field private final unless there's a good reason to do otherwise."
+
+"Constructors should create fully initialized objects with all of their invariants established."
+
+Item 18: Favor composition over inheritance
+
+"Unlike method invocation, inheritance violates encapsulation."
+
+Item 19: Design and document for inheritance or else prohibit it
+
+"In other words, the class must document its self-use of overridable methods."
+
+"To allow programmers to write efficient subclasses without undue pain, a class may have to provide hooks into its internal workings in the form of judiciously chosen protected methods or, in rare instances, protected fields."
+
+"Note: If ListIterator.remove requires linear time, this implementation requires quadratic time."
+
+"The only way to test a class designed for inheritance is to write subclasses."
+
+"Therefore, you must test your class by writing subclasses before you release it."
+
+"Constructors must not invoke overridable methods, directly or indirectly."
+
+"If you do decide to implement either Cloneable or Serializable in a class that is designed for inheritance, you should be aware that because the clone and readObject methods behave a lot like constructors, a similar restriction applies: neither clone nor readObject may invoke an overridable method, directly or indirectly."
+
+"By now it should be apparent that designing a class for inheritance requires great effort and places substantial limitations on the class."
+
+"The best solution to this problem is to prohibit subclassing in classes that are not designed and documented to be safely subclassed."
+
+Item 20: Prefer interfaces to abstract classes
+
+"Existing classes can easily be retrofitted to implement a new interface."
+
+"Interfaces are ideal for defining mixins."
+
+"Interfaces allow for the construction of nonhierarchical type frameworks."
+
+"Interfaces enable safe, powerful functionality enhancements via the wrapper class idiom."
+
+"For brevity's sake, the documentation comments were omitted from the previous example, but good documentation is absolutely essential in a skeletal implementation, whether it consists of default methods on an interface or a separate abstract class."
+
+Item 21: Design interfaces for posterity
+
+"But it is not always possible to write a default method that maintains all invariants of every conceivable implementation."
+
+"In the presence of default methods, existing implementations of an interface may compile without error or warning but fail at runtime."
+
+"Even though default methods are now a part of the Java platform, it is still of the utmost importance to design interfaces with great care."
+
+"While it may be possible to correct some interface flaws after an interface is released, you cannot count on it."
+
+Item 22: Use interfaces only to define types
+
+"The constant interface pattern is a poor use of interfaces."
+
+Item 23: Prefer class hierarchies to tagged classes
+
+"In short, tagged classes are verbose, error-prone, and inefficient."
+
+"A tagged class is just a pallid imitation of a class hierarchy."
+
+Item 24: Favor static member classes over nonstatic
+
+"If you declare a member class that does not require access to an enclosing instance, always put static modifier in its declaration, making it a static rather than a nonstatic member class."
+
+Item 25: Limit source files to a single top-level class
+
+"The lesson is clear: Never put multiple top-level classes or interfaces in a single source file."
+
+### 5 Generics
