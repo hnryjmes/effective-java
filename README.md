@@ -315,3 +315,64 @@ Item 25: Limit source files to a single top-level class
 "The lesson is clear: Never put multiple top-level classes or interfaces in a single source file."
 
 ### 5 Generics
+
+Item 26: Don't use raw types
+
+"If you use raw types, you lose all the safety and expressiveness benefits of generics."
+
+"As a consequence, you lose type safety if you use a raw type such as List, but not if you use a parameterized type such as List<Object>."
+
+"You can put any element into a collection with a raw type, easily corrupting the collection's type invariant; you can't put any element (other than null) into a Collection<?>."
+
+"You must use raw types in class literals."
+
+"This is the preferred way to use the instanceof operator with generic types."
+
+Item 27: Eliminate unchecked warnings
+
+"Eliminate every unchecked warning that you can."
+
+"If you can't eliminate a warning, but you can prove that the code that provoked the warning is typesafe, then (and only then) suppress the warning with an @SuppressWarnings("unchecked") annotation."
+
+"Always use the SuppressWarnings annotation on the smallest scope possible."
+
+"Every time you use a @SuppressWarnings("unchecked") annotation, add a comment saying why it is safe to do so."
+
+Item 28: Prefer lists to arrays
+
+Item 29: Favor generic types
+
+Item 30: Favor generic methods
+
+"The type parameter list, which declares the type parameters, goes between a method's modifiers and its return type."
+
+Item 31: Use bounded wildcards to increase API flexibility
+
+"For maximum flexibility, use wildcard types on input parameters that represent producers or consumers."
+
+"PECS stands for producer-extends, consumer-super."
+
+"Do not use bounded wildcard types as return types."
+
+"If the user of a class has to think about wildcard types, there is probably something wrong with its API."
+
+"Comparables are always consumers, so you should generally use Comparable<? super T> in preference to Comparable<T>."
+
+"The same is true of comparators; therefore, you should generally use Comparator<? super T> in preference to Comparator<T>."
+
+"As a rule, if a type parameter appears only once in a method declaration, replace it with a wildcard."
+
+Item 32: Combine generics and varargs judiciously
+
+"This cast fails, demonstrating that type safety has been compromised, and it is unsafe to store a value in a generic varargs array parameter."
+
+"In essence, the SafeVarargs annotation constitutes a promise by the author of a method that is typesafe."
+
+"This example is meant to drive home the point that it is unsafe to give another method access to a generic varargs parameter array, with two exceptions: it is safe to pass the array to another varargs method that is correctly annotated with @SafeVarargs, and it is safe to pass the array to a non-varargs method that merely computes some function of the contents of the array."
+
+"The rule for deciding when to use the SafeVarargs annotation is simple: Use @SafeVarargs on every method wth a varargs parameter of a generic or parameterized type, so its users won't be burdened by needless and confusing compiler warnings."
+
+Item 33: Consider typesafe heterogeneous containers
+
+### 6 Enums and Annotations
+
