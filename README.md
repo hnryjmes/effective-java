@@ -376,3 +376,51 @@ Item 33: Consider typesafe heterogeneous containers
 
 ### 6 Enums and Annotations
 
+Item 34: Use enums instead of int constants
+
+"To associate data with enum constants, declare instance fields and write a constructor that takes the data and stores it in the fields."
+
+"Switches on enums are good for augmenting enum types with constant-specific behavior."
+
+"Use enums any time you need a set of constants whose members are known at compile time."
+
+"It is not necessary that the set of constants in an enum type stay fixed for all time."
+
+Item 35: Use instance fields instead of ordinals
+
+"Never derive a value associated with an enum from its ordinal; store it in an instance field instead."
+
+Item 36: Use EnumSet instead of bit fields
+
+"In summary, just because an enumerated type will be used in sets, there is no reason to represent it with bit fields."
+
+Item 37: Use EnumMap instead of ordinal indexing
+
+"In summary, it is rarely appropriately to use ordinals to index into arrays: use EnumMap instead."
+
+Item 38: Emulate extensible enums with interfaces
+
+"In summary, while you cannot write an extensible enum type, you can emulate it by writing an interface to accompany a basic enum type that implements the interface."
+
+Item 39: Prefer annotations to naming patterns
+
+"There is simply no reason to use naming patterns when you can use annotations instead."
+
+"But all programmers should use the predefined annotation types that Java provides."
+
+Item 40: Consistently use the Override annotation
+
+"Therefore, you should use the Override annotation on every method declaration that you believe to override a superclass declaration."
+
+Item 41: Use marker interfaces to define types
+
+"First and foremost, marker interfaces define a type that is implemented by instances of the marked class; marker annotations do not."
+
+"Another advantage of marker interfaces over marker annotations is that they can be targeted more precisely."
+
+"The chief advantage of marker annotations over marker interfaces is that they are part of the larger annotation facility."
+
+"If you find yourself writing a marker annotation type whose target is ElementType.TYPE, take the time to figure out whether it really should be an annotation type or whether a marker interface would be more appropriate."
+
+### 7 Lambdas and Streams
+
