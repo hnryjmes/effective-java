@@ -424,3 +424,67 @@ Item 41: Use marker interfaces to define types
 
 ### 7 Lambdas and Streams
 
+Item 42: Prefer lambdas to anonymous classes
+
+"Omit the types of all lambda parameters unless their presence makes your program clearer."
+
+"Unlike methods and classes, lambdas lack names and documentation; if a computation isn't self-explanatory, or exceeds a few lines, don't put it in a lambda."
+
+"Therefore, you should rarely, if ever, serialize a lambda."
+
+"Don't use anonymous classes for function objects unless you have to create instances of types that aren't functional interfaces."
+
+Item 43: Prefer method references to lambdas
+
+"Where method references are shorter and clearer, use them; where they aren't, stick with lambdas."
+
+Item 44: Favor the use of standard functional interfaces
+
+"If one of standard functional interfaces does the job, you should generally use it in preference to a purpose-built functional interface."
+
+"Don't be tempted to use basic functional interfaces with boxed primitives instead of primitive functional interfaces."
+
+"Always annotate your functional interfaces with the @FunctionalInterface annotation."
+
+Item 45: Use streams judiciously
+
+"Overusing streams makes programs hard to read and maintain."
+
+"In the absence of explicit types, careful naming of lambda parameters is essential to the readability of stream pipelines."
+
+"Using helper methods is even more important for readability in stream pipelines than in iterative code because pipelines lack explicit type information and named temporary variables."
+
+"You could fix the program by using a cast to force the invocation of the correct overloading [...] but ideally you should refrain from using streams to process char values."
+
+"So refactor existing code to use streams and use them in new code only where it makes sense to do so."
+
+"If you're not sure whether a task is better served by streams or iteration, try both and see which works better."
+
+Item 46: Prefer side-effect-free functions in streams
+
+"The forEach operation should be used only to report the result of a stream computation, not to perform the computation."
+
+"It is customary and wise to statically import all members of Collectors because it makes stream pipelines more readable."
+
+"The same functionality is available directly on Stream, via the count method, so there is never a reason to say collect(counting())."
+
+Item 47: Prefer Collection to Stream as a return type
+
+"Therefore, Collection or an appropriate subtype is generally the best return type for a public, sequence-returning method."
+
+"But do not store a large sequence in memory just to return it as a collection."
+
+Item 48: Use caution when making streams parallel
+
+"Even under the best of circumstances, parallelizing a pipeline is unlikely to increase its performance if the source if from Stream.iterate, or the intermediate operation limit is used."
+
+"Do not parallelize stream pipelines indiscriminately."
+
+"As a rule, performance gains from parallelism are best on streams over ArrayList, HashMap, HashSet, and ConcurrentHashMap instances; arrays; int ranges; and long ranges."
+
+"Not only can parallelizing a stream lead to poor performance, including liveness failures; it can lead to incorrect results and unpredictable behavior."
+
+"Under the right circumstances, it is possible to achieve near-linear speedup in the number of processor cores simply by adding a parallel call to a stream pipeline."
+
+### 8 Methods
+
