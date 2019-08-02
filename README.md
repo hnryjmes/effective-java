@@ -728,3 +728,68 @@ Item 77: Don't ignore exceptions
 
 ### 11 Concurrency
 
+Item 78: Synchronize access to shared mutable data
+
+"Synchronization is required for reliable communication between threads as well as for mutual exclusion."
+
+"Do not use Thread.stop."
+
+"Synchronization is not guaranteed to work unless both read and write operations are synchronized."
+
+"In other words, confine mutable data to a single thread."
+
+"In summary, when multiple threads share mutable data, each thread that reads or writes the data must perform synchronization."
+
+Item 79: Avoid excessive synchronization
+
+"To avoid liveness and safety failures, never cede control to the client within a synchronized method or block."
+
+"As a rule, you should do as little work as possible inside synchronized regions."
+
+Item 80: Prefer executors, tasks, and streams to threads
+
+Item 81: Prefer concurrency utilities to wait and notify
+
+"Given the difficulty of using wait and notify correctly, you should use the higher-level concurrency utilities instead."
+
+"Therefore, it is impossible to exclude concurrent activity from a concurrent collection; locking it will only slow the program."
+
+"For example, use ConcurrentHashMap in preference to Collections.synchronizedMap."
+
+"For interval timing, always use System.nanoTime rather than System.currentTimeMillis."
+
+"Always use the wait loop idiom to invoke the wait method; never invoke it outside of a loop."
+
+"There is seldom, if ever, a reason to use wait and notify in new code."
+
+Item 82: Document thread safety
+
+"The presence of the synchronized modifier in a method declaration is an implementation detail, not a part of its API."
+
+"To enable safe concurrent use, a class must clearly document what level of thread safety it supports."
+
+"Lock fields should always be declared final."
+
+Item 83: Use lazy initialization judiciously
+
+"Under most circumstances, normal initialization is preferable to lazy initialization."
+
+"If you use lazy initialization to break an initialization circularity, use a synchronized accessor because it is the simplest, clearest alternative."
+
+"If you need to use lazy initialization for performance on a static field, use the lazy initialization holder class idiom."
+
+"If you need to use lazy initialization for performance on an instance field, use the double-check idiom."
+
+Item 84: Don't depend on the thread scheduler
+
+"Any program that relies on the thread scheduler for correctness or performance is likely to be nonportable."
+
+"Threads should not run if they aren't doing useful work."
+
+"When faced with a program that barely works because some threads aren't getting enough CPU time relative to others, resist the temptation to “fix” the program by putting in calls to Thread.yield."
+
+"Thread.yield has no testable semantics."
+
+"Thread priorities are among the least portable features of Java."
+
+### 12 Serialization
