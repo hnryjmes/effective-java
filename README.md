@@ -578,3 +578,101 @@ Item 56: Write doc comments for all exposed API elements
 
 ### 9 General Programming
 
+Item 57: Minimize the scope of local variables
+
+"The most powerful technique for minimizing the scope of a local variable is to declare it where it is first used."
+
+"Nearly every local variable declaration should contain an initializer."
+
+"Therefore, prefer for loops to while loops, assuming the contents of the loop variable aren't needed after the loop terminates."
+
+"A final technique to minimize the scope of local variables is to keep methods small and focused."
+
+Item 58: Prefer for-each loops to traditional for loops
+
+Item 59: Know and use the libraries
+
+"By using a standard library, you take advantage of the knowledge of the experts who wrote it and the experience of those who used it before you."
+
+"For most uses, the random number generator of choice is now ThreadLocalRandom."
+
+"Numerous features are added to the libraries in every major release, and it pays to keep abreast of these additions."
+
+"The libraries are too big to study all the documentation, but every programmer should be familiar with the basics of java.lang, java.util, and java.io, and their subpackages."
+
+Item 60: Avoid float and double if exact answers are required
+
+"The float and double types are particularly ill-suited for monetary calculations because it is impossible to represent 0.1 as a float or double exactly."
+
+"The right way to solve this problem is to use BigDecimal, int, or long for monetary calculations."
+
+Item 61: Prefer primitive types to boxed primitives
+
+"Applying the == operator to boxed primitives is almost always wrong."
+
+"In nearly every case when you mix primitives and boxed primitives in an operation, the boxed primitive is auto-unboxed."
+
+"Autoboxing reduces the verbosity, but not the danger, of using boxed primitives."
+
+"When your program does mixed-type computations involving boxed and unboxed primitives, it does unboxing, and when your program does unboxing, it can throw a NullPointerException."
+
+Item 62: Avoid strings where other types are more appropriate
+
+"Strings are poor substitutes for other value types."
+
+"Strings are poor substitutes for enum types."
+
+"Strings are poor substitutes for aggregate types."
+
+"Strings are poor substitutes for capabilities."
+
+Item 63: Beware the performance of string concatenation
+
+"Using the string concatenation operator repeatedly to concatenate n strings requires time quadratic in n."
+
+"To achieve acceptable performance, use a StringBuilder in place of a String to store the statement under construction."
+
+"The moral is simple: "Don't use the string concatenation operator to combine more than a few strings unless performance is irrelevant."
+
+Item 64: Refer to objects by their interfaces
+
+"If appropriate interface types exist, then parameters, return values, variables, and fields should all be declared using interface types."
+
+"If you get into the habit of using interfaces as types, your program will be much more flexible."
+
+"It is entirely appropriate to refer to an object by a class rather than an interface if no appropriate interface exists."
+
+"If there is no appropriate interface, just use the least specific class in the class hierarchy that provides the required functionality."
+
+Item 65: Prefer interfaces to reflection
+
+"You lose all the benefits of compile-time type checking, including exception checking."
+
+"The code required to perform reflective access is clumsy and verbose."
+
+"Performance suffers."
+
+"You can obtain many of the benefits of reflection while incurring few of its costs by using it only in a very limited form."
+
+"If this is the case, you can create instances reflectively and access them normally via their interface or superclass."
+
+Item 66: Use native methods judiciously
+
+"It is rarely advisable to use native methods for improved performance."
+
+Item 67: Optimize judiciously
+
+"Strive to write good programs rather than fast ones."
+
+"Strive to avoid design decisions that limit performance."
+
+"Consider the public consequences of your API design decisions."
+
+"It is a very bad idea to warp an API to achieve good performance."
+
+"He could have added one more: measure performance before and after each attempted optimization."
+
+Item 68: Adhere to generally accepted naming conventions
+
+### 10 Exceptions
+
