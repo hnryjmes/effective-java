@@ -676,3 +676,55 @@ Item 68: Adhere to generally accepted naming conventions
 
 ### 10 Exceptions
 
+Item 69: Use exceptions only for exceptional conditions
+
+"The moral of this story is simple: Exceptions are, as their name implies, to be used only for exceptional conditions; they should never be used for ordinary control flow."
+
+"A well-designed API must not force its clients to use exceptions for ordinary control flow."
+
+Item  70: Use checked exceptions for recoverable conditions and runtime exceptions for programming errors
+
+"The cardinal rule in deciding whether to use a checked or an unchecked exception is this: use checked exceptions for conditions from which the caller can reasonably be expected to recover."
+
+"Use runtime exceptions to indicate programming errors."
+
+"Therefore, all of the unchecked throwables you implement should subclass RuntimeException (directly or indirectly)."
+
+Item 71: Avoid unnecessary use of checked exceptions
+
+Item 72: Favor the use of standard exceptions
+
+"Do not reuse Exception, RuntimeException, Throwable, or Error directly."
+
+Item 73: Throw exceptions appropriate to the abstraction
+
+"To avoid this problem, higher layers should catch lower-level exceptions and, in their place, throw exceptions that can be explained in terms of the higher-level abstraction."
+
+"While exception translation is superior to mindless propagation of exceptions from lower layers, it should not be overused."
+
+Item 74: Document all exceptions thrown by each method
+
+"Always declare checked exceptions individually, and document precisely the conditions under which each one is thrown using the Javadoc @throws tag."
+
+"Use the Javadoc @throws tag to document each exception that a method can throw, but do not use the throws keyword on checked exceptions."
+
+"If an exception is thrown by many methods in a class for the same reason, you can document the exception in the class's documentation comment rather than documenting it individually for each method."
+
+Item 75: Include failure-capture information in detail messages
+
+"To capture a failure, the detail message of an exception should contain the values of all parameters and fields that contributed to the exception."
+
+"Because stack traces may be seen by many people in the process of diagnosing and fixing software issues, do not include passwords, encryption keys, and the like in detail messages."
+
+Item 76: Strive for failure atomicity
+
+"Generally speaking, a failed method invocation should leave the object in the state that it was in prior to the invocation."
+
+Item 77: Don't ignore exceptions
+
+"An empty catch block defeats the purpose of exceptions, which is to force you to handle exceptional conditions."
+
+"If you choose to ignore an exception, the catch block should contain a comment explaining why it is appropriate to do so, and the variable should be named ignored."
+
+### 11 Concurrency
+
