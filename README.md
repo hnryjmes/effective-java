@@ -793,3 +793,68 @@ Item 84: Don't depend on the thread scheduler
 "Thread priorities are among the least portable features of Java."
 
 ### 12 Serialization
+
+Item 85: Prefer alternatives to Java serialization
+
+"The best way to avoid serialization exploits is never to deserialize anything."
+
+"There is no reason to use Java serialization in any new system you write."
+
+"There is no reason to use Java serialization in any new system you write."
+
+"If you can't avoid Java serialization entirely, perhaps because you're working in the context of a legacy system that requires it, your next best alternative is to never deserialize untrusted data."
+
+"Prefer whitelisting to blacklisting, as blacklisting only protects you against known threats."
+
+Item 86: Implement Serializable with great caution
+
+"A major cost of implementing Serializable is that it decreases the flexibility to change a class's implementation once it has been released."
+
+"A second cost of implementing Serializable is that it increases the likelihood of bugs and security holes."
+
+"A third cost of implementing Serializable is that it increases the testing burden associated with releasing a new version of a class."
+
+"Implementing Serializable is not a decision to be undertaken lightly."
+
+"Classes designed for inheritance should rarely implement Serializable, and interfaces should rarely extend it."
+
+"Inner classes should not implement Serializable."
+
+Item 87: Consider using a custom serialized form
+
+"Do not accept the default serialized form without first considering whether it is appropriate."
+
+"The default serialized form is likely to be appropriate if an object's physical representation is identical to its logical content."
+
+"Even if you decide that the default serialized form is appropriate, you often must provide a readObject method to ensure invariants and security."
+
+"Using the default serialized form when an object's physical representation differs substantially from its logical data content has four disadvantages."
+
+"It permanently ties the exported API to the current internal representation."
+
+"It can consume excessive space."
+
+"It can consume excessive time."
+
+"It can cause stack overflows."
+
+"Before deciding to make a field nontransient, convince yourself that its value is part of the logical state of the object."
+
+"Whether or not you use the default serialized form, you must impose any synchronization on object serialization that you would impose on any other method that reads the entire state of the object."
+
+"Regardless of what serialized form you choose, declare an explicit serial version UID in every serializable class you write."
+
+"Do not change the serial version UID unless you want to break compatibility with all existing serialized instances of a class."
+
+Item 88: Write readObject methods defensively
+
+"When an object is deserialized, it is critical to defensive copy any field containing an object reference that a client must not possess."
+
+Item 89: For instance control, prefer enum types to readResolve
+
+"In fact, if you depend on readResolve for instance control, all instance fields with object reference types must be declared transient."
+
+"The accessibility of readResolve is significant."
+
+Item 90: Consider serialization proxies instead of serialized instances
+
